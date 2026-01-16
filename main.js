@@ -153,13 +153,82 @@ let preguntas = [
     respuestaB: "Intento atrasar el tema hasta que he tenido tiempo para pensarlo.",
     resultadoB: [0, 0, 0, 1, 0],
   },
-     {
+  {
     pregunta: "Pregunta 20",
-    respuestaA:
-      "Intento trabajar los problemas inmediatamente.",
+    respuestaA: "Intento trabajar los problemas inmediatamente.",
     resultadoA: [0, 1, 0, 0, 0],
     respuestaB: "Intento encontrar una contribución justa de pérdidas y ganancias igualmente para mí y para la otra parte.",
     resultadoB: [0, 0, 1, 0, 0],
+  },
+    {
+    pregunta: "Pregunta 21",
+    respuestaA: "Cuando sé que voy a negociar, intento tener en cuenta los deseos de la otra persona.",
+    resultadoA: [0, 0, 0, 0, 1],
+    respuestaB: "Siempre intento discutir directamente el problema.",
+    resultadoB: [0, 1, 0, 0, 0],
+  },
+    {
+    pregunta: "Pregunta 22",
+    respuestaA: "Intento encontrar una posición que sea intermedia entre la de mi “adversaria/o” y la mía.",
+    resultadoA: [0, 0, 1, 0, 0],
+    respuestaB: "Hay veces que dejo que la otra parte lleve la responsabilidad de intentar resolver el problema.",
+    resultadoB: [1, 0, 0, 0, 0],
+  },
+    {
+    pregunta: "Pregunta 23",
+    respuestaA: "Muchas veces me preocupo intentando satisfacer todos mis deseos.",
+    resultadoA: [0, 1, 0, 0, 0],
+    respuestaB: "Hay veces que dejo que la otra parte lleve la responsabilidad de intentar resolver el problema.",
+    resultadoB: [0, 0, 0, 1, 0],
+  },
+    {
+    pregunta: "Pregunta 24",
+    respuestaA: "Si su posición fuera muy importante para él/ella, intentaría dejarla lograr sus deseos.",
+    resultadoA: [0, 0, 1, 0, 0],
+    respuestaB: "Intento que la otra parte se ponga de acuerdo en un punto intermedio.",
+    resultadoB: [1, 0, 0, 0, 0],
+  },
+    {
+    pregunta: "Pregunta 25",
+    respuestaA: "Intento enseñar a la otra parte los benefi cios y lo lógico de mi posición.",
+    resultadoA: [1, 0, 0, 0, 0],
+    respuestaB: "Cuando sé que voy a negociar, intento tener en cuenta los deseos de la otra persona.",
+    resultadoB: [0, 0, 0, 0, 1],
+  },
+    {
+    pregunta: "Pregunta 26",
+    respuestaA: "Yo propongo un punto intermedio.",
+    resultadoA: [0, 0, 1, 0, 0],
+    respuestaB: "Casi siempre estoy preocupada o preocupado por satisfacer todos mis deseos.",
+    resultadoB: [0, 1, 0, 0, 0],
+  },
+    {
+    pregunta: "Pregunta 27",
+    respuestaA: "A veces evito tomar posiciones que crearían confl ictos.",
+    resultadoA: [0, 0, 0, 1, 0],
+    respuestaB: "Si a la otra parte le hace feliz, quizá la deje mantener sus ideas.",
+    resultadoB: [0, 0, 0, 0, 1],
+  },
+    {
+    pregunta: "Pregunta 28",
+    respuestaA: "Suelo ser dura o duro cuando persigo mis metas.",
+    resultadoA: [1, 0, 0, 0, 0],
+    respuestaB: "Suelo buscar la ayuda de la otra parte para trabajar la solución.",
+    resultadoB: [0, 1, 0, 0, 0],
+  },
+    {
+    pregunta: "Pregunta 29",
+    respuestaA: "Propongo un punto intermedio.",
+    resultadoA: [0, 0, 1, 0, 0],
+    respuestaB: "Creo que no siempre merece la pena preocuparse por las diferencias entre las personas.",
+    resultadoB: [0, 0, 0, 1, 0],
+  },
+    {
+    pregunta: "Pregunta 30",
+    respuestaA: "Intento no herir la sensibilidad de la otra parte.",
+    resultadoA: [0, 0, 0, 0, 1],
+    respuestaB: "Siempre comparto el problema con la otra persona para poder arreglarlo.",
+    resultadoB: [0, 1, 0, 0, 0],
   },
 ];
 
@@ -207,8 +276,11 @@ let formValid = true;
 const guardarRespuesta = () => {
   for (let i = 0; i < preguntas.length; i++) {
     let radios = document.getElementsByName(`name${i}`);
+
+    // comprobar si el formulario se puede enviar:
     if (formValid) {
       console.log("name", " ", i, " ", formValid);
+      // no están seleccionadas todas las opciones:
       if (!radios[0].checked && !radios[1].checked) {
         formValid = false;
       }
@@ -219,38 +291,70 @@ const guardarRespuesta = () => {
         ...respuesta,
         document.querySelector(`input[name="name${i}"]:checked`).value,
       ];
-      console.log("respuesta", " ", respuesta);
-      console.log("respuesta i", " ", respuesta[i]);
-      console.log("respuesta", " ", respuesta[i][0]);
-      console.log("preguntas", " ", preguntas);
-      console.log("valoresFinales", " ", valoresFinales);
-      console.log(preguntas[i].pregunta + " preguntaaa");
-      console.log(preguntas[i][respuesta[0]] + " pregunta 1");
-      console.log(preguntas[i][respuesta[1]] + " pregunta 2");
     }
   }
 
+  if (formValid) {
+    console.log("Respuestas guardadas:", respuesta);
+    let resultadosPage = document.createElement("div");
+    resultadosPage.id = "resultadosPage";
+    document.body.appendChild(resultadosPage);
+  }
   if (formValid) {
     for (let i = 0; i < preguntas.length; i++) {
       for (let j = 0; j < valoresFinales.length; j++) {
         valoresFinales[j] += preguntas[i][respuesta[i]][j];
       }
 
-      resultados.innerHTML = `<ul>
-      <li>Competición ${valoresFinales[0]}</li>
-      <li>Colaboración ${valoresFinales[1]}</li>
-      <li>Compartir ${valoresFinales[2]}</li>
-      <li>Evitación ${valoresFinales[3]}</li>
-      <li>Acomodación ${valoresFinales[4]}</li>
-      </ul>`;
+      resultadosPage.innerHTML = `
+      <div id="overlay"> 
+        <div id="resultados">
+        <div id="close"> X </div>
+          <h2 class="resultados-titulo">Tus resultados</h2>
+          <p class="comentario-resultados"> Recuerda guardar tus resultados antes de cerrar la pestaña: estos resultados no se guardarán. </p>
+          <ul>
+            <li class="resultado-item">
+              <p> Competición </p>
+              <p> ${valoresFinales[0]}</p>
+            </li>
+            <li class="resultado-item">
+              <p> Colaboración </p>
+              <p> ${valoresFinales[1]}</p>
+            </li>
+            <li class="resultado-item">
+              <p> Compartir </p>
+              <p> ${valoresFinales[2]}</p>
+            </li>
+            <li class="resultado-item">
+              <p> Evitación </p>
+              <p> ${valoresFinales[3]}</p>
+            </li>
+            <li class="resultado-item">
+              <p> Acomodación </p>
+              <p> ${valoresFinales[4]}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      `;
     }
+
     form.reset();
     respuesta = [];
     for (let i = 0; i < valoresFinales.length; i++) {
       valoresFinales[i] = 0;
     }
+    document.body.appendChild(resultadosPage);
+
+    // Close button logic
+    document.getElementById("close").onclick = function () {
+      removeElement();
+    };
+    function removeElement() {
+      document.getElementById("overlay").remove();
+    }
   } else {
-    alert("nos faltan respuestas");
+    alert("Falta alguna pregunta por rellenar");
     formValid = true;
   }
 };
@@ -272,8 +376,6 @@ boton.addEventListener("click", function (event) {
   event.preventDefault();
   guardarRespuesta();
 });
-
-let resultados = document.querySelector("#resultados");
 
 // añadir clase al elemento de resultados de "hidden" o "visible" según si se han contestado las respuestas,
 // y un "close".
