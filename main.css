@@ -130,5 +130,5 @@ input[type="radio"] {
   margin: 0;
 }
 .comentario-resultados {
-  width: 300px;
+  max-width: 500px;
 }

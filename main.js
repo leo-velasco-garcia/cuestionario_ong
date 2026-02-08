@@ -334,7 +334,7 @@ const guardarRespuesta = () => {
               <p> ${valoresFinales[4]}</p>
             </li>
           </ul>
-          <p> No existen respuestas universalmente acertadas. Todas las modalidades son útiles en algunas situaciones, cada una representa un conjunto de habilidades sociales útiles. </p>
+          <p class="comentario-resultados"> No existen respuestas universalmente acertadas. Todas las modalidades son útiles en algunas situaciones, cada una representa un conjunto de habilidades sociales útiles. </p>
         </div>
       </div>
       `;
