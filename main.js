@@ -311,7 +311,7 @@ const guardarRespuesta = () => {
         <div id="resultados">
         <div id="close"> X </div>
           <h2 class="resultados-titulo">Tus resultados</h2>
-          <p class="comentario-resultados"> Recuerda guardar tus resultados antes de cerrar la pestaña: estos resultados no se guardarán. </p>
+          <p class="comentario-resultados"> Recuerda apuntar tus resultados antes de cerrar la pestaña: estos resultados no se guardarán. </p>
           <ul>
             <li class="resultado-item">
               <p> Competición </p>
