@@ -23,6 +23,10 @@ body {
   font-weight: 400;
   margin-top: 0;
 }
+.contextoParrafo {
+  max-width: 800px;
+  padding-bottom: 1rem;
+}
 .instruccionesParrafo {
   max-width: 800px;
   padding-bottom: 1rem;
