@@ -70,6 +70,15 @@ input[type="radio"] {
     background-color: #3261e2;
   }
 }
+#boton {
+  background-color: #3261e2;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
 #overlay {
   background: rgba(0, 0, 0, 0.3);
@@ -81,16 +90,13 @@ input[type="radio"] {
   overflow: hidden;
 }
 #close {
-  position: absolute;
-  top: 9vh;
-  right: 355px;
+  color: rgb(212, 0, 0);
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
-  background-color: #e7e7e7;
   padding: 5px 10px;
   border-radius: 50%;
-  border: 1px solid gray;
+
 }
 #resultados {
   margin: 10vh auto;
@@ -107,6 +113,7 @@ input[type="radio"] {
 }
 .resultados-titulo {
   margin: 0;
+  margin-left: 10%;
   margin-bottom: 1rem;
   text-align: center;
 }

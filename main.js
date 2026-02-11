@@ -3,7 +3,6 @@ let preguntas = [
     pregunta: "Pregunta 1",
     respuestaA:
       "A veces dejo que la otra parte tome la responsabilidad para resolver el problema.",
-
     respuestaB:
       "En vez de negociar los puntos donde no estamos de acuerdo, intento poner énfasis en esos puntos donde estamos de acuerdo.",
     resultadoA: [0, 0, 0, 1, 0],
@@ -93,9 +92,9 @@ let preguntas = [
     pregunta: "Pregunta 12",
     respuestaA:
       "Algunas veces evito tomar posiciones que puedan crear conflicto.",
-    resultadoA: [0, 0, 1, 0, 0],
+    resultadoA: [0, 0, 0, 1, 0],
     respuestaB: "Dejaré que gane alguna de sus posiciones si me deja a mí ganar alguna de las mías.",
-    resultadoB: [0, 0, 0, 1, 0],
+    resultadoB: [0, 0, 1, 0, 0],
   },
      {
     pregunta: "Pregunta 13",
@@ -184,13 +183,13 @@ let preguntas = [
     {
     pregunta: "Pregunta 24",
     respuestaA: "Si su posición fuera muy importante para él/ella, intentaría dejarla lograr sus deseos.",
-    resultadoA: [0, 0, 1, 0, 0],
+    resultadoA: [0, 0, 0, 0, 1],
     respuestaB: "Intento que la otra parte se ponga de acuerdo en un punto intermedio.",
-    resultadoB: [1, 0, 0, 0, 0],
+    resultadoB: [0, 0, 1, 0, 0],
   },
     {
     pregunta: "Pregunta 25",
-    respuestaA: "Intento enseñar a la otra parte los benefi cios y lo lógico de mi posición.",
+    respuestaA: "Intento enseñar a la otra parte los beneficios y lo lógico de mi posición.",
     resultadoA: [1, 0, 0, 0, 0],
     respuestaB: "Cuando sé que voy a negociar, intento tener en cuenta los deseos de la otra persona.",
     resultadoB: [0, 0, 0, 0, 1],
@@ -204,7 +203,7 @@ let preguntas = [
   },
     {
     pregunta: "Pregunta 27",
-    respuestaA: "A veces evito tomar posiciones que crearían confl ictos.",
+    respuestaA: "A veces evito tomar posiciones que crearían conflictos.",
     resultadoA: [0, 0, 0, 1, 0],
     respuestaB: "Si a la otra parte le hace feliz, quizá la deje mantener sus ideas.",
     resultadoB: [0, 0, 0, 0, 1],
@@ -309,8 +308,12 @@ const guardarRespuesta = () => {
       resultadosPage.innerHTML = `
       <div id="overlay"> 
         <div id="resultados">
-        <div id="close"> X </div>
+        <div style="display: flex; justify-content: space-between; width: 100%">
+         
           <h2 class="resultados-titulo">Tus resultados</h2>
+         <div id="close"> X </div>
+          </div>
+          <div> 
           <p class="comentario-resultados"> Recuerda apuntar tus resultados antes de cerrar la pestaña: estos resultados no se guardarán. </p>
           <ul>
             <li class="resultado-item">
@@ -352,7 +355,7 @@ const guardarRespuesta = () => {
       removeElement();
     };
     function removeElement() {
-      document.getElementById("overlay").remove();
+      document.getElementById("resultadosPage").remove();
     }
   } else {
     alert("Falta alguna pregunta por rellenar");
